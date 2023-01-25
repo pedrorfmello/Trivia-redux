@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar as informações da pessoa usuária
 const INITIAL_STATE = {
-  name: '',
+  playerName: '',
   assertions: 0,
   score: 0,
   gravatarEmail: '',
@@ -11,7 +11,7 @@ function player(state = INITIAL_STATE, action) {
   case 'LOGIN_USER':
     return {
       ...state,
-      name: action.payload.name,
+      playerName: action.payload.playerName,
       gravatarEmail: action.payload.email,
     };
   case 'CHANGE_SCORE':
@@ -23,7 +23,7 @@ function player(state = INITIAL_STATE, action) {
   case 'RESET_STORE':
     return {
       ...state,
-      name: '',
+      playerName: '',
       gravatarEmail: '',
       score: 0,
       assertions: 0,
