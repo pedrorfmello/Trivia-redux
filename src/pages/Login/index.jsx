@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import triviaLogo from '../../trivia.png';
 import { loginUser } from '../../redux/actions/login';
-// import * as api from '../../helpers/api';
+import * as api from '../../helpers/api';
 
 const Login = () => {
   // Instancia o dispatch
@@ -43,6 +43,8 @@ const Login = () => {
 
     if (emailValidation() && nameValidation()) {
       setBtnStatus(false);
+    } else {
+      setBtnStatus(true);
     }
   }, [playerInfo]);
 
