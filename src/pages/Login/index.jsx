@@ -5,6 +5,7 @@ import triviaLogo from '../../trivia.png';
 import { loginUser } from '../../redux/actions/login';
 import { emailValidation, nameValidation } from '../../helpers/validations';
 import * as api from '../../helpers/api';
+import './Login.css';
 
 const Login = () => {
   // Instancia o dispatch
@@ -33,7 +34,7 @@ const Login = () => {
     }
   }, [playerInfo]);
 
-  // Lida com os dados do input
+  // Atualiza os inputs com o state
   const changeInput = ({ target }) => {
     const { id, value } = target;
     setPlayerInfo((prevState) => ({ ...prevState, [id]: value }));
@@ -42,7 +43,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login-body">
-        <img src={ triviaLogo } className="login-logo" alt="Logo Trivia" />
+        <img src={ triviaLogo } className="Login-logo" alt="Logo Trivia" />
         <div className="login-form">
           <h2>Bem-vindo, insira suas informações para jogar.</h2>
           <label htmlFor="playerName">

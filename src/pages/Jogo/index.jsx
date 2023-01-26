@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Header from '../../components/Header';
 import QuestCard from '../../components/QuestCard';
 import { fetchTriviaQuestion } from '../../helpers/api';
 import { decodeHTML } from '../../helpers/decoder';
@@ -8,11 +9,13 @@ import { shuffle } from '../../helpers/shuffle';
 const Jogo = () => {
   const history = useHistory();
   const maxQuests = 5;
+
   // Iniciando os estados do compomente
   const [isLoading, setIsLoading] = useState(true);
   const [nextBtnStatus, setNextBtnStatus] = useState(false);
   const [allQuestions, setAllQuestions] = useState([]);
   const [index, setIndex] = useState(0);
+
   // Estados do componente QuestCard
   const questTime = 30;
   const [timer, setTimer] = useState(questTime);
@@ -76,7 +79,7 @@ const Jogo = () => {
 
   return (
     <>
-      <header>AQUI</header>
+      <Header />
       <div className="quest-body">
         <div className="quest-card">
           { isLoading
