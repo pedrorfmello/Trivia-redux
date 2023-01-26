@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import QuestCard from '../../components/QuestCard';
 import { fetchTriviaQuestion } from '../../helpers/api';
+import { decoder } from '../../helpers/decoder';
+import { shuffle } from '../../helpers/shuffle';
 
 const Jogo = () => {
   const history = useHistory();
@@ -16,11 +18,18 @@ const Jogo = () => {
   const [timer, setTimer] = useState(questTime);
   const [gameTimeout, setGameTimeout] = useState(false);
 
-  // Embaralha um array
-  const shuffle = (array) => {
-    const diff = 0.5;
-    array.sort(() => Math.random() - diff);
-    return array;
+  // Decodifica string html ou array de strings
+  const decodeHTML = (encodedHTML) => {
+    if (typeof (encodedHTML) !== 'string') {
+      let newArr = [];
+      encodedHTML.forEach((answer) => {
+        newArr = [...newArr, decoder(answer)];
+      });
+
+      return newArr;
+    }
+
+    return decoder(encodedHTML);
   };
 
   useEffect(() => {
@@ -34,10 +43,10 @@ const Jogo = () => {
         difficulty,
       }) => {
         setAllQuestions((prevState) => [...prevState, {
-          question,
+          question: decodeHTML(question),
           category,
-          answers: shuffle([...incorrect, correct]),
-          correct,
+          correct: decodeHTML(correct),
+          answers: shuffle([...decodeHTML(incorrect), decodeHTML(correct)]),
           difficulty,
         }]);
       });
