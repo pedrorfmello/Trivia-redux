@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import triviaLogo from '../../trivia.png';
 import { loginUser } from '../../redux/actions/login';
+import { emailValidation, nameValidation } from '../../helpers/validations';
 import * as api from '../../helpers/api';
 
 const Login = () => {
@@ -25,23 +26,7 @@ const Login = () => {
 
   // Valida dos inputs para liberação do botão "Jogar"
   useEffect(() => {
-    const emailValidation = () => {
-      const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-      if (!playerInfo.email || regex.test(playerInfo.email) === false) {
-        return false;
-      }
-      return true;
-    };
-
-    const nameValidation = () => {
-      const minLength = 3;
-      if (playerInfo.playerName.length < minLength) {
-        return false;
-      }
-      return true;
-    };
-
-    if (emailValidation() && nameValidation()) {
+    if (emailValidation(playerInfo.email) && nameValidation(playerInfo.playerName)) {
       setBtnStatus(false);
     } else {
       setBtnStatus(true);

@@ -25,10 +25,8 @@ const Jogo = () => {
       encodedHTML.forEach((answer) => {
         newArr = [...newArr, decodeHTML(answer)];
       });
-
       return newArr;
     }
-
     return decodeHTML(encodedHTML);
   };
 
