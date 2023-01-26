@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import triviaLogo from '../../trivia.png';
 import { loginUser } from '../../redux/actions/login';
+import { emailValidation, nameValidation } from '../../helpers/validations';
 import * as api from '../../helpers/api';
+import './Login.css';
 
 const Login = () => {
   // Instancia o dispatch
@@ -25,30 +27,14 @@ const Login = () => {
 
   // Valida dos inputs para liberação do botão "Jogar"
   useEffect(() => {
-    const emailValidation = () => {
-      const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-      if (!playerInfo.email || regex.test(playerInfo.email) === false) {
-        return false;
-      }
-      return true;
-    };
-
-    const nameValidation = () => {
-      const minLength = 3;
-      if (playerInfo.playerName.length < minLength) {
-        return false;
-      }
-      return true;
-    };
-
-    if (emailValidation() && nameValidation()) {
+    if (emailValidation(playerInfo.email) && nameValidation(playerInfo.playerName)) {
       setBtnStatus(false);
     } else {
       setBtnStatus(true);
     }
   }, [playerInfo]);
 
-  // Lida com os dados do input
+  // Atualiza os inputs com o state
   const changeInput = ({ target }) => {
     const { id, value } = target;
     setPlayerInfo((prevState) => ({ ...prevState, [id]: value }));
@@ -57,7 +43,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login-body">
-        <img src={ triviaLogo } className="login-logo" alt="Logo Trivia" />
+        <img src={ triviaLogo } className="Login-logo" alt="Logo Trivia" />
         <div className="login-form">
           <h2>Bem-vindo, insira suas informações para jogar.</h2>
           <label htmlFor="playerName">
