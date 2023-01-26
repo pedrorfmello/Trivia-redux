@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import QuestCard from '../../components/QuestCard';
 import { fetchTriviaQuestion } from '../../helpers/api';
-import { decoder } from '../../helpers/decoder';
+import { decodeHTML } from '../../helpers/decoder';
 import { shuffle } from '../../helpers/shuffle';
 
 const Jogo = () => {
@@ -19,17 +19,17 @@ const Jogo = () => {
   const [gameTimeout, setGameTimeout] = useState(false);
 
   // Decodifica string html ou array de strings
-  const decodeHTML = (encodedHTML) => {
+  const decode = (encodedHTML) => {
     if (typeof (encodedHTML) !== 'string') {
       let newArr = [];
       encodedHTML.forEach((answer) => {
-        newArr = [...newArr, decoder(answer)];
+        newArr = [...newArr, decodeHTML(answer)];
       });
 
       return newArr;
     }
 
-    return decoder(encodedHTML);
+    return decodeHTML(encodedHTML);
   };
 
   useEffect(() => {
@@ -43,10 +43,10 @@ const Jogo = () => {
         difficulty,
       }) => {
         setAllQuestions((prevState) => [...prevState, {
-          question: decodeHTML(question),
+          question: decode(question),
           category,
-          correct: decodeHTML(correct),
-          answers: shuffle([...decodeHTML(incorrect), decodeHTML(correct)]),
+          correct: decode(correct),
+          answers: shuffle([...decode(incorrect), decode(correct)]),
           difficulty,
         }]);
       });
