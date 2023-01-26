@@ -29,7 +29,7 @@ const QuestCard = ({
     return () => clearInterval(interval);
   }, [gameTimeout, setGameTimeout, setTimer, timer, setNextBtnStatus]);
 
-  // Seleciona todos as respostas e adiciona a classe 'answer-wrong' apenas nas respostas erradas
+  // Seleciona todos as respostas e adiciona a classe de estilização das respostas erradas e corretas
   const findAndSetClassName = () => {
     const allButtons = document.querySelectorAll('.answer-btn');
     let wrongIndex = 0;
