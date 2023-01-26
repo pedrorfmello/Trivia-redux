@@ -53,6 +53,7 @@ const QuestCard = ({
 
     const score = baseValue + (timer * multipliers[difficulty]);
 
+    // Atualiza a pontuação do jogador no Redux
     dispatch(changeScore({
       score,
       assertions: 1,

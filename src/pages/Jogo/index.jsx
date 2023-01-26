@@ -54,11 +54,12 @@ const Jogo = () => {
     fetchQuestions();
   }, []);
 
-  // Passa para a próxima pergunta
   const handleNext = () => {
+    // Quando chega na última pergunta redireciona para a tela de feedback
     if (index === maxQuests - 1) {
       history.push('/feedback');
     }
+    // Passa para a próxima pergunta
     setIndex(index + 1);
     // Reseta o tempo do contador
     setTimer(questTime);
