@@ -7,6 +7,7 @@ import './Header.css';
 const Header = () => {
   const { playerName, gravatarEmail, score } = useSelector((state) => state.player);
   const emailHash = md5(gravatarEmail).toString();
+  const photoLink = `https://www.gravatar.com/avatar/${emailHash}`;
 
   return (
     <header>
@@ -24,7 +25,7 @@ const Header = () => {
       <img
         data-testid="header-profile-picture"
         className="avatar"
-        src={ `https://www.gravatar.com/avatar/${emailHash}` }
+        src={ photoLink }
         alt={ `Gravatar de ${playerName}` }
       />
     </header>
