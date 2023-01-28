@@ -6,18 +6,7 @@ import { getLocalRanking } from '../../helpers/localStorage';
 const Ranking = () => {
   const [ranking, setRanking] = useState([]);
 
-  const orderRanking = (players) => {
-    players.sort((a, b) => {
-      if (parseInt(a.score, 10) > parseInt(b.score, 10)) {
-        return -1;
-      }
-      if (parseInt(a.score, 10) < parseInt(b.score, 10)) {
-        return 1;
-      }
-      return 0;
-    });
-    return players;
-  };
+  const orderRanking = (players) => players.sort((a, b) => b.score - a.score);
 
   useEffect(() => {
     const localRanking = orderRanking(getLocalRanking());
