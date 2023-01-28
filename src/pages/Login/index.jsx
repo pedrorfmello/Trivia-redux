@@ -86,6 +86,12 @@ const Login = () => {
           </Link>
         </div>
       </div>
+      <Link to="/configuracao">
+        <button data-testid="btn-settings" type="button">Configuração</button>
+      </Link>
+      <Link to="/ranking">
+        <button data-testid="btn-ranking" type="button">Ranking</button>
+      </Link>
     </div>
   );
 };
