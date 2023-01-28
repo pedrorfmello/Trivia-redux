@@ -10,9 +10,7 @@ const Ranking = () => {
 
   useEffect(() => {
     const localRanking = orderRanking(getLocalRanking());
-    setRanking(() => [
-      ...localRanking,
-    ]);
+    setRanking(() => [...localRanking]);
   }, [setRanking]);
 
   return (
@@ -30,11 +28,7 @@ const Ranking = () => {
                 <span data-testid={ `player-name-${index}` }>{name}</span>
               </h4>
               <h4 data-testid={ `player-score-${index}` }>{score}</h4>
-              <img
-                className="avatar"
-                src={ picture }
-                alt={ `Gravatar de ${name}` }
-              />
+              <img className="avatar" src={ picture } alt={ `Gravatar de ${name}` } />
             </div>
           ))}
           <Link to="/">
