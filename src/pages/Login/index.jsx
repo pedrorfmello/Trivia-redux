@@ -62,7 +62,7 @@ const Login = () => {
               onChange={ changeInput }
             />
           </label>
-          <label htmlFor="playerName">
+          <label htmlFor="email">
             Email:
             {' '}
             <input
