@@ -6,6 +6,7 @@ import { loginUser } from '../../redux/actions/login';
 import { emailValidation, nameValidation } from '../../helpers/validations';
 import * as api from '../../helpers/api';
 import './Login.css';
+import { initiateRanking } from '../../helpers/localStorage';
 
 const Login = () => {
   // Instancia o dispatch
@@ -21,6 +22,9 @@ const Login = () => {
   const onClickButton = async () => {
     // Envia as informações dos usuários para o Redux
     dispatch(loginUser(playerInfo));
+
+    // Verifica se o ranking está criado no localStorage
+    initiateRanking();
 
     await api.getTriviaToken();
   };
