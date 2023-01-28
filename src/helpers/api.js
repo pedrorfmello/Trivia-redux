@@ -2,6 +2,7 @@ import * as local from './localStorage';
 
 const URL_TRIVIA_TOKEN = 'https://opentdb.com/api_token.php?command=request';
 const URL_TRIVIA_QUESTION = 'https://opentdb.com/api.php?amount=5&token=';
+const URL_TRIVIA_CATEGORIES = 'https://opentdb.com/api_category.php';
 
 // Pega um token pelo fetch.
 export const fetchTriviaToken = async () => {
@@ -23,4 +24,10 @@ export const fetchTriviaQuestion = async () => {
   const response = await fetch(URL_TRIVIA_QUESTION + token);
   const data = await response.json();
   return data.results;
+};
+
+export const fetchAllCategories = async () => {
+  const response = await fetch(URL_TRIVIA_CATEGORIES);
+  const data = await response.json();
+  return data.trivia_categories;
 };
