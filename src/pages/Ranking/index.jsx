@@ -1,7 +1,9 @@
 /* eslint-disable no-magic-numbers */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import { getLocalRanking } from '../../helpers/localStorage';
+import './ranking.css';
 
 const Ranking = () => {
   const [ranking, setRanking] = useState([]);
@@ -14,12 +16,18 @@ const Ranking = () => {
   }, [setRanking]);
 
   return (
-    <>
-      <h1>RANKING</h1>
-      <div className="ranking-page">
-        <div className="ranking-container content-wrap">
+    <div className="ranking-page">
+      <div className="ranking-header">
+        <h1>RANKING</h1>
+        <Link to="/">
+          <input data-testid="btn-go-home" className="rk-btn" type="button" value="Inicio" />
+        </Link>
+      </div>
+      <div className="ranking">
+        <div className="ranking-container">
           {ranking.map(({ name, score, picture }, index) => (
             <div key={ index } className="ranking-item">
+              <img className="avatar" src={ picture } alt={ `Gravatar de ${name}` } />
               <h4>
                 <span>
                   {`${index + 1}º. `}
@@ -28,15 +36,12 @@ const Ranking = () => {
                 <span data-testid={ `player-name-${index}` }>{name}</span>
               </h4>
               <h4 data-testid={ `player-score-${index}` }>{score}</h4>
-              <img className="avatar" src={ picture } alt={ `Gravatar de ${name}` } />
             </div>
           ))}
-          <Link to="/">
-            <input data-testid="btn-go-home" type="button" value="Inicio" />
-          </Link>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 };
 
