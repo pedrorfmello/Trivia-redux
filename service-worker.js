@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Trivia-redux/precache-manifest.0c963a81ac091d4be6ea73757790d5fc.js"
+  "/Trivia-redux/precache-manifest.0f7b6c0968c75d6d1379325138272db1.js"
 );
 
 self.addEventListener('message', (event) => {
