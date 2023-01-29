@@ -7,6 +7,7 @@ import { emailValidation, nameValidation } from '../../helpers/validations';
 import * as api from '../../helpers/api';
 import './Login.css';
 import { initiateRanking } from '../../helpers/localStorage';
+import Footer from '../../components/Footer';
 
 const Login = () => {
   // Instancia o dispatch
@@ -48,26 +49,28 @@ const Login = () => {
     <div className="login">
       <div className="login-body">
         <img src={ triviaLogo } className="Login-logo" alt="Logo Trivia" />
-        <div className="login-form">
-          <h2>Bem-vindo, insira suas informações para jogar.</h2>
-          <label htmlFor="playerName">
+        <h2>Bem-vindo, insira suas informações para jogar.</h2>
+        <div className="login-form form">
+          <label htmlFor="playerName" className="login-form">
             Nome:
             {' '}
             <input
               required
               data-testid="input-player-name"
+              className="form-control"
               id="playerName"
               type="playerName"
               value={ playerInfo.playerName }
               onChange={ changeInput }
             />
           </label>
-          <label htmlFor="email">
+          <label htmlFor="email" className="login-form">
             Email:
             {' '}
             <input
               required
               data-testid="input-gravatar-email"
+              className="form-control"
               id="email"
               type="email"
               value={ playerInfo.email }
@@ -85,13 +88,20 @@ const Login = () => {
             />
           </Link>
         </div>
+        <div className="btns-content">
+          <Link to="/configuracao">
+            <button data-testid="btn-settings" className="btn btn-settings" type="button">
+              Configuração
+            </button>
+          </Link>
+          <Link to="/ranking">
+            <button data-testid="btn-ranking" className="btn btn-ranking" type="button">
+              Ranking
+            </button>
+          </Link>
+        </div>
       </div>
-      <Link to="/configuracao">
-        <button data-testid="btn-settings" type="button">Configuração</button>
-      </Link>
-      <Link to="/ranking">
-        <button data-testid="btn-ranking" type="button">Ranking</button>
-      </Link>
+      <Footer />
     </div>
   );
 };
