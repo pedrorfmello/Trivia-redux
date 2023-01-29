@@ -1,0 +1,55 @@
+.feedback-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.pontuacao-feed {
+  display: flex;
+  font-size: calc(0.6rem + 0.6vw);
+  margin-top: 15px;
+}
+
+span {
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.feed-btn {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: calc(0.6rem + 0.6vw);
+  margin: 20px 10px 0 0;
+  padding: 15px;
+  transition: transform 150ms;
+  width: 200px;
+}
+
+.feed-btn:hover {
+  background-color: #202124;
+  color: white;
+  transform: scale(1.05);
+  transition: transform 150ms;
+}
+
+.feedback-btns {
+  display: flex;
+}
+
+.feedback-btns > input {
+  margin-right: 15px;
+}
+
+.feedback-container {
+  align-items: center;
+  background-color: rgb(61, 61, 61);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.message {
+  font-size: calc(4rem + 0.6vw);
+  font-weight: 600;
+}
