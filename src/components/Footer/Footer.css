@@ -1,0 +1,8 @@
+footer {
+  background-color: #202124;
+  display: flex;
+  font-size: calc(0.6rem + 0.6vw);
+  justify-content: space-around;
+  padding: 20px;
+  outline: #202124 solid 1px;
+}
