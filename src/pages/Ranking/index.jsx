@@ -20,7 +20,12 @@ const Ranking = () => {
       <div className="ranking-header">
         <h1>RANKING</h1>
         <Link to="/">
-          <input data-testid="btn-go-home" className="rk-btn" type="button" value="Inicio" />
+          <input
+            data-testid="btn-go-home"
+            className="rk-btn"
+            type="button"
+            value="Inicio"
+          />
         </Link>
       </div>
       <div className="ranking">
