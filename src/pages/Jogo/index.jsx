@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import QuestCard from '../../components/QuestCard';
 import { fetchTriviaQuestion } from '../../helpers/api';
 import { decodeHTML } from '../../helpers/decoder';
 import { shuffle } from '../../helpers/shuffle';
+import './Jogo.css';
 
 const Jogo = () => {
   const history = useHistory();
@@ -23,7 +25,7 @@ const Jogo = () => {
 
   // Decodifica string html ou array de strings
   const decode = (encodedHTML) => {
-    if (typeof (encodedHTML) !== 'string') {
+    if (typeof encodedHTML !== 'string') {
       let newArr = [];
       encodedHTML.forEach((answer) => {
         newArr = [...newArr, decodeHTML(answer)];
@@ -36,21 +38,26 @@ const Jogo = () => {
   useEffect(() => {
     // Separa as informações vindas da API e as organiza nos states
     const createAnswers = (questions) => {
-      questions.forEach(({
-        incorrect_answers: incorrect,
-        correct_answer: correct,
-        question,
-        category,
-        difficulty,
-      }) => {
-        setAllQuestions((prevState) => [...prevState, {
-          question: decode(question),
+      questions.forEach(
+        ({
+          incorrect_answers: incorrect,
+          correct_answer: correct,
+          question,
           category,
-          correct: decode(correct),
-          answers: shuffle([...decode(incorrect), decode(correct)]),
           difficulty,
-        }]);
-      });
+        }) => {
+          setAllQuestions((prevState) => [
+            ...prevState,
+            {
+              question: decode(question),
+              category,
+              correct: decode(correct),
+              answers: shuffle([...decode(incorrect), decode(correct)]),
+              difficulty,
+            },
+          ]);
+        },
+      );
       // Remove a mensagem "Carregando..." da tela
       setIsLoading(false);
     };
@@ -75,32 +82,37 @@ const Jogo = () => {
     setTimer(questTime);
     // Reativa o contador
     setGameTimeout(false);
+    // Desativa o botão Next
+    setNextBtnStatus(false);
   };
 
   return (
-    <>
+    <div className="game-page">
       <Header />
-      <div className="quest-body">
-        <div className="quest-card">
-          { isLoading
-            ? <h1>Carregando...</h1>
-            : (
-              <QuestCard
-                key={ index }
-                quest={ allQuestions[index] }
-                timer={ timer }
-                setTimer={ setTimer }
-                gameTimeout={ gameTimeout }
-                setGameTimeout={ setGameTimeout }
-                setNextBtnStatus={ setNextBtnStatus }
-              />) }
-          { nextBtnStatus
-            ? <button type="button" onClick={ handleNext }>Next</button>
-            : ''}
-        </div>
+      <div className="quest-card">
+        {isLoading ? (
+          <h1>Carregando...</h1>
+        ) : (
+          <QuestCard
+            key={ index }
+            quest={ allQuestions[index] }
+            timer={ timer }
+            setTimer={ setTimer }
+            gameTimeout={ gameTimeout }
+            setGameTimeout={ setGameTimeout }
+            setNextBtnStatus={ setNextBtnStatus }
+          />
+        )}
+        {nextBtnStatus ? (
+          <button type="button" className="btn nxt-btn" onClick={ handleNext }>
+            Next
+          </button>
+        ) : (
+          ''
+        )}
       </div>
-      <footer>FECHA AQUI</footer>
-    </>
+      <Footer />
+    </div>
   );
 };
 
