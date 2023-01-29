@@ -1,0 +1,29 @@
+.game-page {
+  display: flex;
+  flex-flow: column wrap;
+  height: 100vh;
+  justify-content: flex-start;
+}
+
+.quest-card {
+  background-color: rgb(61, 61, 61);
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-basis: 0;
+  flex-flow: column wrap;
+  flex-grow: 1;
+  justify-content: flex-start;
+  padding: 20px 30px;
+}
+
+.nxt-btn {
+  align-self: center;
+  color: #181a1b;
+  font-size: calc(0.6rem + 0.6vw);
+  width: 20%;
+}
+
+.nxt-btn:hover {
+  background-color: #202124;
+  color: white;
+}

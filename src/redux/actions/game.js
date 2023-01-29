@@ -1,4 +1,4 @@
-const changeScore = (setScore) => ({
+export const changeScore = (setScore) => ({
   type: 'CHANGE_SCORE',
   payload: {
     score: setScore.score,
@@ -6,7 +6,7 @@ const changeScore = (setScore) => ({
   },
 });
 
-export {
-  // eslint-disable-next-line import/prefer-default-export
-  changeScore,
-};
+export const resetGame = () => ({
+  type: 'RESET_STORE',
+  payload: {},
+});
