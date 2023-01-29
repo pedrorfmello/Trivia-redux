@@ -1,6 +1,6 @@
 {
   "name": "trivia-react-redux",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://pedrorfmello.github.io/Trivia-redux/",
   "private": true,
   "engines": {
@@ -24,15 +24,15 @@
     "cy": "cypress run",
     "cy:open": "cypress open",
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:watch": "react-scripts test --watchAll",
     "eject": "react-scripts eject",
     "test-coverage": "react-scripts test --coverage --watchAll=false",
     "lint:styles": "npx stylelint '**/*.css'",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx"
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
