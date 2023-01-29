@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './QuestCard.css';
 import { useDispatch } from 'react-redux';
 import { changeScore } from '../../redux/actions/game';
+import './QuestCard.css';
 
 const QuestCard = ({
-  quest, timer, setTimer, gameTimeout, setGameTimeout, setNextBtnStatus }) => {
+  quest,
+  timer,
+  setTimer,
+  gameTimeout,
+  setGameTimeout,
+  setNextBtnStatus,
+}) => {
   const { question, category, answers, correct, difficulty } = quest;
 
   const dispatch = useDispatch();
@@ -51,13 +57,15 @@ const QuestCard = ({
     const baseValue = 10;
     const multipliers = { hard: 3, medium: 2, easy: 1 };
 
-    const score = baseValue + (timer * multipliers[difficulty]);
+    const score = baseValue + timer * multipliers[difficulty];
 
     // Atualiza a pontuação do jogador no Redux
-    dispatch(changeScore({
-      score,
-      assertions: 1,
-    }));
+    dispatch(
+      changeScore({
+        score,
+        assertions: 1,
+      }),
+    );
   };
 
   // Confere se a resposta seleciona é a correta
@@ -72,15 +80,26 @@ const QuestCard = ({
     }
   };
 
+  const timerClass = () => {
+    const lastSeconds = 10;
+    if (timer === 0) {
+      return 'finish';
+    }
+    if (timer < lastSeconds) {
+      return 'timerOver';
+    }
+    return 'timer';
+  };
+
   return (
-    <>
-      <div>
-        <h3 data-testid="question-category">{ category }</h3>
-        <h2>{ question }</h2>
+    <div className="quest-body">
+      <h1 className={ timerClass() }>{timer}</h1>
+      <div className="quest-header">
+        <h3 data-testid="question-category">{category}</h3>
+        <h2>{question}</h2>
       </div>
-      <h1>{ timer }</h1>
-      <div data-testid="answer-options">
-        { answers.map((answer, index) => (
+      <div data-testid="answer-options" className="answer-options">
+        {answers.map((answer, index) => (
           <button
             key={ index }
             type="button"
@@ -89,10 +108,11 @@ const QuestCard = ({
             disabled={ gameTimeout }
             data-testid="question-text"
           >
-            { answer }
-          </button>)) }
+            {answer}
+          </button>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
