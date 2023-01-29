@@ -14,11 +14,11 @@ const Header = () => {
       <img src={ triviaLogo } className="Trivia-logo Login-logo" alt="logo" />
       <div className="usuario">
         <div className="jogador">
-          <h6>Jogador</h6>
+          <h6>Jogador: </h6>
           <p data-testid="header-player-name">{playerName}</p>
         </div>
         <div className="pontuacao">
-          <h6>Pontuação</h6>
+          <h6>Pontuação: </h6>
           <p data-testid="header-score">{score}</p>
         </div>
       </div>

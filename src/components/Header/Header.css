@@ -1,3 +1,42 @@
+header {
+  background-color: #202124;
+  box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.25);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 1;
+}
+
+h6 {
+  color: grey;
+  font-size: calc(0.6rem + 0.6vw);
+}
+
+p {
+  color: white;
+  margin-left: 10px;
+}
+
+.usuario {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.jogador {
+  margin-bottom: 10px;
+}
+
+.jogador, .pontuacao {
+  align-items: center;
+  display: flex;
+}
+
+.avatar {
+  border-radius: 100%;
+}
+
 .Trivia-logo {
   height: 8vmin;
   pointer-events: none;
