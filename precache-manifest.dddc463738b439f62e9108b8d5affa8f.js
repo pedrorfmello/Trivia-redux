@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4ad334bb7623f30524d79fb8e8d1a0c9",
+    "revision": "1b2aa6c83608bf1a5e8a94fd0fa4c743",
     "url": "/Trivia-redux/index.html"
   },
   {
