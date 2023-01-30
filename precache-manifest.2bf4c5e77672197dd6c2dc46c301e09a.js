@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8fe47db7830fd5852f2b2424bcd0b89f",
+    "revision": "5f9922232f28f58b1f55fc7b09330ad2",
     "url": "/Trivia-redux/index.html"
   },
   {
-    "revision": "382ba9bca7a1f1259956",
+    "revision": "5b4d367ea0ee752244e1",
     "url": "/Trivia-redux/static/css/main.5ffde977.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Trivia-redux/static/js/2.fb2c1d23.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "382ba9bca7a1f1259956",
-    "url": "/Trivia-redux/static/js/main.97c9f8e3.chunk.js"
+    "revision": "5b4d367ea0ee752244e1",
+    "url": "/Trivia-redux/static/js/main.278804ab.chunk.js"
   },
   {
     "revision": "fe248f2912b3b4d46f86",
