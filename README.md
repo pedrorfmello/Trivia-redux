@@ -1,4 +1,4 @@
-# Projeto Trivia React Redux [View/Ver]()
+# Projeto Trivia React Redux [View/Ver](pedrorfmello.github.io/Trivia-redux)
 Este projeto foi proposto no módulo de Front-End na [Trybe](https://www.betrybe.com/) e feito por _[Pedro Mello](https://www.linkedin.com/in/pedro-rfmello/)_ :rocket:
 
 <img src="/preview.jpg" alt="Preview do Projeto"/>
